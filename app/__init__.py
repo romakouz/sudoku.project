@@ -5,6 +5,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 
+#import or own sudoku modules
+import print_funcs
+import cnn_predict_funcs as cnn
+import preprocess_funcs as prep
+import solve_funcs
+
+
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
 
@@ -40,13 +47,12 @@ def submit():
             img = request.files['image'] # jpg object
             img = np.loadtxt(img) # numpy array with the pixel values
 
-            x = img.reshape(1, 64)
             
             # 2
             model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
             
             # 3, 4
-            digit = model.predict(x)[0]
+            puzzle = cnn.CompleteSudokuPredictFromRaw(img, model)
 
             # 5. NOTE this code is for displaying an image, we want to print a numpy array 
             fig = Figure(figsize=(3, 3))
