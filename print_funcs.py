@@ -13,14 +13,14 @@ def print_puzzle(p):
     puzzleprint = ""
     for i in range(len(p)):
         if i % 3 == 0 and i != 0:
-            puzzleprint += "------------------------ "
+            puzzleprint += "------------------------ \n"
 
         for j in range(len(p[0])):
             if j % 3 == 0 and j != 0:
                 puzzleprint += " | "
 
             if j == 8:
-                puzzleprint += str(p[i][j])
+                puzzleprint += str(p[i][j]) + "\n"
             else:
                 puzzleprint += str(p[i][j]) + " "
     return puzzleprint
