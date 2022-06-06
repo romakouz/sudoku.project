@@ -3,7 +3,7 @@
 {% block header %}
   <h1>{% block title %}Submit a Puzzle{% endblock %}</h1>
 {% endblock %}
-
+{white-space: pre-wrap;}
 {% block content %}
   <form method="post" enctype="multipart/form-data">
       <label for="image">Please upload an image.</label><br>
@@ -21,9 +21,7 @@
     <br>
     Here is what we recieved. Your puzzle: (Based on our CNN image classifier)
     <br>
-    div {
-      white-space: pre-wrap;
-    }
+    
     <div>
     {{prediction}}
     </div>
