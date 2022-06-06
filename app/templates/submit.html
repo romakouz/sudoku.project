@@ -34,13 +34,21 @@
   Please check that your puzzle looks like this:
   Your puzzle: (Based on our CNN image classifier)
   {{prediction}}
-
-  However, unfortuna
-  <br>
-{% endif %}
+    <br>
+  {% endif %}
 
   {% if error %}
     <br>
     Oh no, we couldn't use that file!  Please upload a jpg file of a Sudoku puzzle.
+  {% endif %}
+
+  {% if error1 %}
+    <br>
+    The image loaded
+  {% endif %}
+
+  {% if error2 %}
+    <br>
+    The image did not load
   {% endif %}
 {% endblock %}
