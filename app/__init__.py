@@ -68,7 +68,7 @@ def submit():
             
                 
             except:
-                return render_template('submit.html', error2=True, shape=img_shape)
+                return render_template('submit.html', error2=True)
             # 5. NOTE this code is for displaying an image, we want to print a numpy array 
             #fig = Figure(figsize=(3, 3))
             #ax = fig.add_subplot(1, 1, 1,)
@@ -91,7 +91,7 @@ def submit():
                 #compute solution
                 puzzle_sol = puzzle.copy()
             except:
-                return render_template('submit.html', error3=True)
+                return render_template('submit.html', error3=True, shape=img_shape)
 
             try:
                 #try to solve the puzzle
