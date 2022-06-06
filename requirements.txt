@@ -8,3 +8,7 @@ Werkzeug==0.15.6
 scikit-learn
 matplotlib
 tensorflow
+print_funcs
+cnn_predict_funcs
+preprocess_funcs
+solve_funcs
