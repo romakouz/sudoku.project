@@ -100,8 +100,8 @@ def submit():
             puzzle_sol = puzzle.copy()
             try:
                 #try to solve the puzzle
-                sf.sudoku_solve(puzzle_sol)
-                puzzle_sol_str = pf.print_puzzle(puzzle_sol)
+                
+                puzzle_sol_str = pf.print_puzzle(sf.sudoku_solve(puzzle_sol))
                 return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol_str)
             except:
                 #if cannot solve, only return prediction
