@@ -53,7 +53,7 @@ def submit():
 
             img = request.files['image'] # jpg object
             try:
-                img = imread(img,0)
+                img = cv2.imread(img,0)
             except:
                 error1 = True
                 return render_template('submit.html', error1=True)
