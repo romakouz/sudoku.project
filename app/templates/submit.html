@@ -49,6 +49,12 @@
 
   {% if error2 %}
     <br>
-    The image did not load
+    Error in loading pickle
   {% endif %}
+
+  {% if error3 %}
+    <br>
+    CNNpredict did not work (or print_puzzle)
+  {% endif %}
+
 {% endblock %}

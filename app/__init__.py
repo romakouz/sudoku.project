@@ -7,9 +7,9 @@ import pickle
 import cv2
 
 #import or own sudoku modules
-import print_funcs
+import print_funcs as pf
 import prep_and_predict as pnp
-import solve_funcs
+import solve_funcs as sf
 
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
@@ -66,7 +66,7 @@ def submit():
             try:
                 model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
             
-                puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
+                
             except:
                 error2 = True
                 return render_template('submit.html', error2=True)
@@ -86,7 +86,8 @@ def submit():
 
             #instead, create string for predicted puzzle, and solution
             try:
-                puzzle_str = print_puzzle(puzzle)
+                puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
+                puzzle_str = pf.print_puzzle(puzzle)
 
                 #compute solution
                 puzzle_sol = puzzle.copy()
@@ -96,8 +97,8 @@ def submit():
 
             try:
                 #try to solve the puzzle
-                sudoku_solve(puzzle_sol)
-                puzzle_sol_str = print_puzzle(puzzle_sol)
+                sf.sudoku_solve(puzzle_sol)
+                puzzle_sol_str = pf.print_puzzle(puzzle_sol)
                 return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol_str)
             except:
                 #if cannot solve, only return prediction
