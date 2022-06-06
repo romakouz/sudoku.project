@@ -173,5 +173,5 @@ def CompleteSudokuPredictFromRaw(image, model_pickled):
       if certainty < 0.5: 
         print("We are uncertain if the prediction in row " + i.str() + ", column "+ j.str() +" is correct.")
   
-  return puzzle_arr,
+  return puzzle_arr
 
