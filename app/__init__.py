@@ -72,7 +72,7 @@ def submit():
                 
             except:
                 return render_template('submit.html', error2=True)
-            # 5. NOTE this code is for displaying an image, we want to print a numpy array 
+            # 5. this code is for displaying an image, we want to print a numpy array 
             #fig = Figure(figsize=(3, 3))
             #ax = fig.add_subplot(1, 1, 1,)
             #ax.imshow(img, cmap='binary')
