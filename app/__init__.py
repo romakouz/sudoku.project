@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 import cv2
-from PIL import image
+from PIL import Image
 
 #import or own sudoku modules
 import print_funcs as pf
