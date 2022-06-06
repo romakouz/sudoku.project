@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pickle
 import cv2
-import PIL 
+from PIL import image
 
 #import or own sudoku modules
 import print_funcs as pf
@@ -54,7 +54,7 @@ def submit():
 
             img = request.files['image'] # jpg object
             try:
-                img = PIL.Image.open(img,0)
+                img = Image.open(img)
                 gray_img = img.convert("L")
                 img = np.array(gray_img)
             except:
