@@ -48,7 +48,7 @@ def submit():
             img = np.loadtxt(img) # numpy array with the pixel values
 
             
-            # 2
+            # 2 load pickle model, call CompleteSudokuPredictFromRaw to get prediction of puzzle from the model
             model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
             
             # 3, 4
