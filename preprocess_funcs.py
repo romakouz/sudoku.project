@@ -108,5 +108,5 @@ def fullpreprocess(img):
       imagewrap = cv2.warpPerspective(img,matrix,(450,450))
       return imagewrap
     else:
-      raise ValueError("Error: Image cannot be preprocessed"
+      raise ValueError("Error: Image cannot be preprocessed")
 
