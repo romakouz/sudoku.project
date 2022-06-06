@@ -8,8 +8,7 @@ import cv2
 
 #import or own sudoku modules
 import print_funcs
-import cnn_predict_funcs as cnn
-import preprocess_funcs as prep
+import prep_and_predict as pnp
 import solve_funcs
 
 
@@ -67,7 +66,7 @@ def submit():
             try:
                 model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
             
-                puzzle = cnn.CompleteSudokuPredictFromRaw(img, model)
+                puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
             except:
                 error2 = True
                 return render_template('submit.html', error2=True)
@@ -87,7 +86,7 @@ def submit():
 
             #instead, create string for predicted puzzle, and solution
             try:
-                uzzle_str = print_puzzle(puzzle)
+                puzzle_str = print_puzzle(puzzle)
 
                 #compute solution
                 puzzle_sol = puzzle.copy()
