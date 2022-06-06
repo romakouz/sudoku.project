@@ -4,6 +4,7 @@ import sklearn as sk
 import matplotlib.pyplot as plt
 import numpy as np
 import pickle
+import cv2
 
 #import or own sudoku modules
 import print_funcs
@@ -45,7 +46,7 @@ def submit():
             '''
             # 1
             img = request.files['image'] # jpg object
-            img = np.loadtxt(img) # numpy array with the pixel values
+            img = cv2.imread(img)#np.loadtxt(img) # numpy array with the pixel values
 
             
             # 2 load pickle model, call CompleteSudokuPredictFromRaw to get prediction of puzzle from the model
@@ -77,7 +78,7 @@ def submit():
                 #try to solve the puzzle
                 sudoku_solve(puzzle_sol)
                 puzzle_sol_str = print_puzzle(puzzle_sol)
-                return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol)
+                return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol_str)
             except:
                 #if cannot solve, only return prediction
                 return render_template('submit.html', prediction=puzzle_str, solve_error = True)
