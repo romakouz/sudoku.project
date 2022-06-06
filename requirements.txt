@@ -8,4 +8,7 @@ Werkzeug==0.15.6
 scikit-learn
 matplotlib
 tensorflow
-git+git://github.com/romakouz/sudoku.project/sudoku_functions
+git+git://github.com/romakouz/sudoku.project/sudoku_functions/cnn_predict_funcs.py
+git+git://github.com/romakouz/sudoku.project/sudoku_functions/preprocess_funcs.py
+git+git://github.com/romakouz/sudoku.project/sudoku_functions/print_funcs.py
+git+git://github.com/romakouz/sudoku.project/sudoku_functions/solve_funcs.py
