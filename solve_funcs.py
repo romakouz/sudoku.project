@@ -52,7 +52,7 @@ def find_cell(puzzle):
 
 
 #solve function
-def solve(puzzle):
+def sudoku_solve(puzzle):
   '''
   recursively solves puzzle until all cells are filled in (validly)
   using backtracking
@@ -71,7 +71,7 @@ def solve(puzzle):
           #if valid, input given entry at location
           puzzle[row][col] = i
           #check if we can solve the puzzle with the entry we used
-          if solve(puzzle):
+          if sudoku_solve(puzzle):
               return puzzle, True
           #if we cannot, reset entry to 0, try again
           puzzle[row][col] = 0

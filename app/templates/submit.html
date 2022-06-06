@@ -15,11 +15,29 @@
     Thanks for submitting a file!
   {% endif %}
 
-  {% if digit %}
+  {% if prediction %}
     <br>
-    Thanks for the puzzle! Here is what we recieved (will do something to display puzzle or solved puzzle).
+    Thanks for the puzzle!
+    Here is what we recieved (will do something to display puzzle or solved puzzle).
+    Your puzzle: (Based on our CNN image classifier)
+    {{prediction}}
+
+    Here is the solution to the puzzle:
+    {{solution}}
     <br>
   {% endif %}
+
+  {% if solve_error%}
+  <br>
+  Thanks for the puzzle!
+  Unfortunately our solver encountered an error while solving, indicating that the puzzle is unsolvable.
+  Please check that your puzzle looks like this:
+  Your puzzle: (Based on our CNN image classifier)
+  {{prediction}}
+
+  However, unfortuna
+  <br>
+{% endif %}
 
   {% if error %}
     <br>

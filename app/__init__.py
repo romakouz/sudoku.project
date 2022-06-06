@@ -51,24 +51,36 @@ def submit():
             # 2 load pickle model, call CompleteSudokuPredictFromRaw to get prediction of puzzle from the model
             model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
             
-            # 3, 4
             puzzle = cnn.CompleteSudokuPredictFromRaw(img, model)
 
             # 5. NOTE this code is for displaying an image, we want to print a numpy array 
-            fig = Figure(figsize=(3, 3))
-            ax = fig.add_subplot(1, 1, 1,)
-            ax.imshow(img, cmap='binary')
-            ax.axis("off")
+            #fig = Figure(figsize=(3, 3))
+            #ax = fig.add_subplot(1, 1, 1,)
+            #ax.imshow(img, cmap='binary')
+            #ax.axis("off")
 
             # weird part of 5. 
-            pngImage = io.BytesIO()
-            FigureCanvas(fig).print_png(pngImage) # convert the pyplot figure object to a PNG image
+            #pngImage = io.BytesIO()
+            #FigureCanvas(fig).print_png(pngImage) # convert the pyplot figure object to a PNG image
 
             # encode the PNG image to base64 string
-            pngImageB64String = "data:image/png;base64,"
-            pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
+            #pngImageB64String = "data:image/png;base64,"
+            #pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
 
-            return render_template('submit.html',
-             image=pngImageB64String, digit=digit)
+            #instead, create string for predicted puzzle, and solution
+            puzzle_str = print_puzzle(puzzle)
+
+            #compute solution
+            puzzle_sol = puzzle.copy()
+            
+            try:
+                #try to solve the puzzle
+                sudoku_solve(puzzle_sol)
+                puzzle_sol_str = print_puzzle(puzzle_sol)
+                return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol)
+            except:
+                #if cannot solve, only return prediction
+                return render_template('submit.html', prediction=puzzle_str, solve_error = True)
+            
         except:
             return render_template('submit.html', error=True)
