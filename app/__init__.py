@@ -58,7 +58,7 @@ def submit():
                 error1 = True
                 return render_template('submit.html', error1=True)
             #np.loadtxt(img) # numpy array with the pixel values
-
+            img_shape = img.shape
             
             # 2 load pickle model, call CompleteSudokuPredictFromRaw to get prediction of puzzle from the model
             
@@ -68,7 +68,7 @@ def submit():
             
                 
             except:
-                return render_template('submit.html', error2=True)
+                return render_template('submit.html', error2=True, shape=img_shape)
             # 5. NOTE this code is for displaying an image, we want to print a numpy array 
             #fig = Figure(figsize=(3, 3))
             #ax = fig.add_subplot(1, 1, 1,)
