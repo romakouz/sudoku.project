@@ -89,13 +89,14 @@ def submit():
             #instead, create string for predicted puzzle, and solution
             try:
                 puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
-                puzzle_str = pf.print_puzzle(puzzle)
-
-                #compute solution
-                puzzle_sol = puzzle.copy()
+                
             except:
                 return render_template('submit.html', error3=True, shape=img_shape)
 
+            puzzle_str = pf.print_puzzle(puzzle)
+
+            #compute solution
+            puzzle_sol = puzzle.copy()
             try:
                 #try to solve the puzzle
                 sf.sudoku_solve(puzzle_sol)
