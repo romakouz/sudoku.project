@@ -15,6 +15,7 @@ import solve_funcs
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 from matplotlib.figure import Figure
+from matplotlib import image
 
 import io
 import base64
@@ -47,7 +48,7 @@ def submit():
             # 1
             img = request.files['image'] # jpg object
             try:
-                img = cv2.imread(img,0)
+                img = image.imread(img,0)
                 return render_template('submit.html', error1=True)
 
             except:
