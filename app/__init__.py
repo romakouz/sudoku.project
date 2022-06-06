@@ -46,16 +46,31 @@ def submit():
             6. Print the prediction and some message on the template
             '''
             # 1
+
+            error1 =False
+            error2 =False
+            error3 =False
+
+
             img = request.files['image'] # jpg object
-            img = image.imread(img,0)
+            try:
+                img = image.imread(img,0)
+            except:
+                error1 = True
+                return render_template('submit.html', error1=True)
             #np.loadtxt(img) # numpy array with the pixel values
 
             
             # 2 load pickle model, call CompleteSudokuPredictFromRaw to get prediction of puzzle from the model
-            model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
             
-            puzzle = cnn.CompleteSudokuPredictFromRaw(img, model)
 
+            try:
+                model = pickle.load(open('sudoku-model/model.pkl', 'rb'))
+            
+                puzzle = cnn.CompleteSudokuPredictFromRaw(img, model)
+            except:
+                error2 = True
+                return render_template('submit.html', error2=True)
             # 5. NOTE this code is for displaying an image, we want to print a numpy array 
             #fig = Figure(figsize=(3, 3))
             #ax = fig.add_subplot(1, 1, 1,)
@@ -71,11 +86,15 @@ def submit():
             #pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
 
             #instead, create string for predicted puzzle, and solution
-            puzzle_str = print_puzzle(puzzle)
+            try:
+                uzzle_str = print_puzzle(puzzle)
 
-            #compute solution
-            puzzle_sol = puzzle.copy()
-            
+                #compute solution
+                puzzle_sol = puzzle.copy()
+            except:
+                error3 = True
+                return render_template('submit.html', error3=True)
+
             try:
                 #try to solve the puzzle
                 sudoku_solve(puzzle_sol)
