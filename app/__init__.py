@@ -46,7 +46,13 @@ def submit():
             '''
             # 1
             img = request.files['image'] # jpg object
-            img = cv2.imread(img)#np.loadtxt(img) # numpy array with the pixel values
+            try:
+                img = cv2.imread(img,0)
+                return render_template('submit.html', error1=True)
+
+            except:
+                return render_template('submit.html', error2=True)
+                #np.loadtxt(img) # numpy array with the pixel values
 
             
             # 2 load pickle model, call CompleteSudokuPredictFromRaw to get prediction of puzzle from the model
