@@ -87,13 +87,14 @@ def submit():
             #pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
 
             #instead, create string for predicted puzzle, and solution
+            puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
             try:
-                puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
+                puzzle_str = pf.print_puzzle(puzzle)
                 
             except:
                 return render_template('submit.html', error3=True, shape=img_shape)
 
-            puzzle_str = pf.print_puzzle(puzzle)
+            
 
             #compute solution
             puzzle_sol = puzzle.copy()
