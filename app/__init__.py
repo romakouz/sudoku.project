@@ -175,7 +175,7 @@ def ready():
 
         return render_template('submit.html', solved=True, solution=puzzle_sol_str, original=puzzle_str)
     else:
-        return redirect(url_for('/correcting'))
+        return render_template('submit.html', recorrect=True, tofix=puzzle_str)
     
 
 @app.route('/correcting1', methods=['POST'])
