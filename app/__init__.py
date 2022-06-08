@@ -136,7 +136,7 @@ def correcting():
     global puzzle
     #get correction
     corr = request.form['correction']
-    corr_tuple = tuple([int(i) for i in corr.split(,)])
+    corr_tuple = tuple([int(i) for i in corr.split(',')])
 
     #correct puzzle
     puzzle = correct(corr_tuple,puzzle)
