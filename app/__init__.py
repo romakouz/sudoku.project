@@ -126,6 +126,7 @@ def submit():
         except:
             return render_template('submit.html', error=True)
 
+'''
 @app.route('/correcting', methods=['POST'])
 def correcting():
     
@@ -135,3 +136,4 @@ def correcting():
         return render_template('submit.html', adjusting=True, adjustment = corr)
     except:
         return render_template('submit.html', bigerror = True)
+        '''

@@ -34,14 +34,14 @@
   
   <br>
   However we are uncertain about certain values.
-<br>
+  <br>
   <form method="post" action="{{ url_for('correction') }}">
     <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
       <br> (e.g. i,j,k corresponds to inputting digit k in ith row, jth column).
     <br> (Enter 0 if cell should be blank.).</label><br>
     <input type="text" name="correction" id="correction" placeholder= "row,column,digit">
     <input type="submit" value="Correct index">
-</form>
+  </form>
 
   <pre>
     {{uncertain}}
