@@ -34,6 +34,14 @@
     <br>
   {% endif %}
 
+  {% if uncertainty %}
+  <br>
+  Thanks for the puzzle. Here is what our puzzle looks like.
+  {{prediction}}
+  However we are uncertain about certain values.
+  {{uncertain}}
+  {% endif %}
+  
   {% if solve_error%}
   <br>
   Thanks for the puzzle!
@@ -59,12 +67,6 @@
     Error in loading pickle
   {% endif %}
 
-  {% if uncertainty %}
-  <br>
-  Thanks for the puzzle. Here is what our puzzle looks like.
-  {{prediction}}
-  However we are uncertain about certain values.
-  {{uncertain}}
-  {% endif %}
+  
 
 {% endblock %}
