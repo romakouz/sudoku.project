@@ -132,19 +132,26 @@ def submit():
         except:
             return render_template('submit.html', error=True)
 
+#copy original puzzle into editable version
+c_puzzle = puzzle.copy()
+
 @app.route('/correcting', methods=['POST'])
 def correcting():
-    #use global puzzle
+    #use global c_puzzle and copy it
+    global c_puzzle
     global puzzle
+    
     #get correction
     corr = request.form['correction']
     corr_tuple = tuple([int(i) for i in corr.split(',')])
 
     #correct puzzle
-    puzzle = correct(corr_tuple,puzzle)
+    c_puzzle = correct(corr_tuple,c_puzzle)
+    c_puzzle_str = pf.print_puzzle(c_puzzle)
+
     puzzle_str = pf.print_puzzle(puzzle)
 
 
-    return render_template('submit.html', adjusting=True, adjustment=corr, new_puzzle=puzzle_str)
+    return render_template('submit.html', adjusting=True, adjustment=corr, new_puzzle=c_puzzle_str, old_puzzle=puzzle_str)
     # your code
     # return a response
