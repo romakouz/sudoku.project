@@ -132,6 +132,8 @@ def submit():
 
 @app.route('/correcting', methods=['POST'])
 def correcting():
+    #use global puzzle
+    global puzzle
     #get correction
     corr = request.form['correction']
     corr_tuple = tuple(corr.split(','))
