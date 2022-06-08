@@ -39,6 +39,7 @@ puzzle = np.zeros((9,9))
 def submit():
     #make sure changes to puzzle are global
     global puzzle
+    global c_puzzle
     if request.method == 'GET':
         return render_template('submit.html')
     else:
@@ -97,7 +98,9 @@ def submit():
 
             #instead, create string for predicted puzzle, and solution
             puzzle, uncertain_values = pnp.CompleteSudokuPredictFromRaw(img, model)
-            
+            #copy into our changing puzzle
+            c_puzzle = puzzle.copy()
+
             puzzle_str = pf.print_puzzle(puzzle)
 
             if len(uncertain_values) > 0:
