@@ -134,7 +134,7 @@ def submit():
             except:
                 return render_template('submit.html', error=True)
 
-@app.route('/correcting', methods=['POST')
+@app.route('/correcting', methods=['POST'])
 def correcting():
     
     try:
