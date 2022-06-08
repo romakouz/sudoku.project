@@ -105,19 +105,20 @@ def submit():
                 uncertain_str += " is correct.\n Please double check this with the image."
 
                 return render_template('submit.html', uncertainty=True, prediction=puzzle_str, uncertain=uncertain_str)
-
             
+            else:
+                
 
-            #compute solution
-            puzzle_sol = puzzle.copy()
-            try:
-                #try to solve the puzzle
-                sf.sudoku_solve(puzzle_sol)
-                puzzle_sol_str = pf.print_puzzle(puzzle_sol)
-                return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol_str)
-            except:
-                #if cannot solve, only return prediction
-                return render_template('submit.html', prediction=puzzle_str, solve_error = True)
+                #compute solution
+                puzzle_sol = puzzle.copy()
+                try:
+                    #try to solve the puzzle
+                    sf.sudoku_solve(puzzle_sol)
+                    puzzle_sol_str = pf.print_puzzle(puzzle_sol)
+                    return render_template('submit.html', prediction=puzzle_str, solution=puzzle_sol_str)
+                except:
+                    #if cannot solve, only return prediction
+                    return render_template('submit.html', prediction=puzzle_str, solve_error = True)
             
         except:
             return render_template('submit.html', error=True)

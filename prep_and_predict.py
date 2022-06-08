@@ -173,10 +173,10 @@ def CompleteSudokuPredictFromRaw(image, model_pickled):
     for j in range(9):
       prediction, certainty = CNN1predict(cells[i*9 +j], model_pickled)
       puzzle_arr[i][j]=prediction
-      if certainty < 0.8: 
+      if certainty < 0.5: 
         #add uncertain tuple to list
-        unertain.append((i,j))
-        print("We are uncertain if the prediction in row " + i.str() + ", column "+ j.str() +" is correct.")
+        uncertain.append((i,j))
+        #print("We are uncertain if the prediction in row " + i.str() + ", column "+ j.str() +" is correct.")
   
   return puzzle_arr, uncertain
 
