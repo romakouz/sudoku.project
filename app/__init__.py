@@ -165,8 +165,8 @@ def ready():
     global c_puzzle
     global puzzle
     
-    ready = request.form['ready']
-    if ready == "yes":
+    answer = request.form['answer']
+    if answer == "yes":
 
         puzzle_str = pf.print_puzzle(c_puzzle)
         #try to solve the puzzle
