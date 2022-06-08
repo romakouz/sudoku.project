@@ -6,7 +6,7 @@
 {white-space: pre-wrap;}
 {% block content %}
   <form method="post" enctype="multipart/form-data">
-      <label for="image">Please upload an image.</label><br>
+      <label for="image">Please upload an image of a sudoku puzzle in jpeg format.</label><br>
       <input type="file" name="image" id="image">
       <input type="submit" value="Submit form">
   </form>
@@ -77,25 +77,6 @@
   <br>
   {% endif %}
   
-
-  {% if prediction %}
-    <br>
-    Thanks for the puzzle!
-    <br>
-    Here is what we recieved.
-    <br> Your puzzle: (Based on our CNN image classifier)
-    <br>
-    
-    <pre>
-{{prediction}}
-    </pre>
-
-    Here is the solution to the puzzle:
-    <pre>
-{{solution}}
-    </pre>
-    <br>
-  {% endif %}
 
 
   {% if solve_error%}
