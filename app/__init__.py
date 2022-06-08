@@ -37,6 +37,8 @@ puzzle = np.zeros((9,9))
 
 @app.route('/submit-sudoku/', methods=['POST', 'GET'])
 def submit():
+    #make sure changes to puzzle are global
+    global puzzle
     if request.method == 'GET':
         return render_template('submit.html')
     else:
