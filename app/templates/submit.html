@@ -10,14 +10,6 @@
       <input type="file" name="image" id="image">
       <input type="submit" value="Submit form">
   </form>
-  <form method="post">
-    <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
-      <br> (e.g. i,j,k corresponds to inputting digit k in ith row, jth column).
-    <br> (Enter 0 if cell should be blank.).</label><br>
-    <input type="text" name="correction" id="Cell-data" placeholder= "row,column,digit">
-    <input type="submit" value="Correct index">
-</form>
-  
 
   {% if thanks %}
     Thanks for submitting a file!
@@ -27,6 +19,10 @@
     Thanks for the correction. Your correction is:
     <br>
     {{adjustment}}
+  {% endif %}
+
+  {% if bigerror %}
+    We just experienced a big error
   {% endif %}
 
   {% if uncertainty %}

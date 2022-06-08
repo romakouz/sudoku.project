@@ -37,7 +37,7 @@ def submit():
         return render_template('submit.html')
     else:
         img = request.files['image'] #get image as jpg object
-        corr = request.form['correction']
+        
         if not img:
             #if no image,  then user is only submitting correction
             corr = request.form['correction']
@@ -133,3 +133,14 @@ def submit():
                 
             except:
                 return render_template('submit.html', error=True)
+
+def correct():
+    if request.method == 'GET':
+        return render_template('submit.html')
+    else:
+        try:
+        
+            corr = request.form['correction'] #get correction      
+            return render_template('submit.html', adjusting=True, adjustment = corr)
+        except:
+            return render_template('submit.html', bigerror = True)
