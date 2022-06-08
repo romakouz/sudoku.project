@@ -6,7 +6,7 @@
 {white-space: pre-wrap;}
 {% block content %}
   <form method="post" enctype="multipart/form-data">
-      <label for="image">Please upload an image of a sudoku puzzle in jpeg format.</label><br>
+      <label for="image">Please upload an image of a sudoku puzzle in jpeg format.<br></label><br>
       <input type="file" name="image" id="image">
       <input type="submit" value="Submit form">
   </form>
@@ -66,7 +66,17 @@
   
   <br>
   However we are uncertain about certain values.
-  {}
+<br>
+  
+<form action="{{ url_for('correcting1') }}" method="post">
+  <label for="ready">Would you like to make a correction?</label>
+  <input type="radio" name="answer1" id="yes" value="yes">
+  <label for="yes">Yes</label>
+  <input type="radio" name="answer1" id="no" value="no">
+  <label for="No">No</label>
+  <br>
+  <input type="submit" value="Submit">
+
   <form action="{{ url_for('correcting') }}" method="post">
     <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
       <br> (e.g. i,j,k corresponds to inputting digit k in ith row, jth column).
