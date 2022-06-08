@@ -11,11 +11,7 @@
       <input type="submit" value="Submit form">
   </form>
 
-  <form method="post">
-    <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.</label><br>
-    <input type="text" name="image" placeholder= "e.g. i,j,k corresponds to inputting digit k in ith row, jth column" id="image">
-    <input type="submit" value="Correct index">
-</form>
+  
 
   {% if thanks %}
     Thanks for submitting a file!
@@ -30,6 +26,11 @@
   
   <br>
   However we are uncertain about certain values.
+  <form method="post">
+    <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.</label><br>
+    <input type="text" name="image" placeholder= "e.g. i,j,k corresponds to inputting digit k in ith row, jth column" id="image">
+    <input type="submit" value="Correct index">
+</form>
   <pre>
     {{uncertain}}
   </pre>
