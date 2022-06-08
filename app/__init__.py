@@ -187,7 +187,7 @@ def correcting1():
     #get correction
     answer = request.form['submit_button']
     if answer == "yes":
-        return redirect(url_for('/correcting'))
+        return render_template('submit.html', recorrect=True)
     
     else:
         puzzle_str = pf.print_puzzle(c_puzzle)

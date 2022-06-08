@@ -75,10 +75,15 @@
   <input type ="submit" name="submit_button" value = "no">
 </form>
 
+  {% endif %}
 
-<input type ="submit" name="submit_button" value = "">
-<br>
-  
+  {% if recorrect %}
+  <br>
+  The currect puzzle:
+  <pre>
+    {{original}}
+  </pre>
+
 
   <form action="{{ url_for('correcting') }}" method="post">
     <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
