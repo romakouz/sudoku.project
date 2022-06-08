@@ -134,13 +134,12 @@ def submit():
             except:
                 return render_template('submit.html', error=True)
 
-def correct():
-    if request.method == 'GET':
-        return render_template('submit.html')
-    else:
-        try:
-        
-            corr = request.form['correction'] #get correction      
-            return render_template('submit.html', adjusting=True, adjustment = corr)
-        except:
-            return render_template('submit.html', bigerror = True)
+@app.route('/correcting', methods=['POST')
+def correcting():
+    
+    try:
+    
+        corr = request.form['correction'] #get correction      
+        return render_template('submit.html', adjusting=True, adjustment = corr)
+    except:
+        return render_template('submit.html', bigerror = True)
