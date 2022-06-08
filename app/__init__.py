@@ -158,3 +158,23 @@ def correcting():
     return render_template('submit.html', adjusting=True, adjustment=corr, new_puzzle=c_puzzle_str, old_puzzle=puzzle_str)
     # your code
     # return a response
+
+@app.route('/ready', methods=['POST'])
+def ready():
+    #use global c_puzzle and copy it
+    global c_puzzle
+    global puzzle
+    
+    ready = request.form['ready']
+    if ready == "yes":
+
+        puzzle_str = pf.print_puzzle(c_puzzle)
+        #try to solve the puzzle
+        sf.sudoku_solve(c_puzzle)
+        puzzle_sol_str = pf.print_puzzle(c_puzzle)
+
+        return render_template('submit.html', solved=True, solution=puzzle_sol_str, original=puzzle_str)
+    else:
+        redirect
+    
+    

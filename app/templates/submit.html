@@ -31,8 +31,28 @@
 {{new_puzzle}}
     </pre>
     
+    
+    <form action="{{ url_for('ready') }}" method="post">
+      <label for="ready">Are you now ready to solve?</label>
+      <input type="radio" name="answer" id="yes" value="yes">
+      <label for="yes">Yes</label>
+      <input type="radio" name="answer" id="no" value="no">
+      <label for="No">No</label>
 
   {% endif %}
+
+  {% if solved %}
+    We will now solve using backtracking.
+    <pre>
+    The puzzle being solved:                         
+{{original}}                         
+
+    And the solution is:
+{{solution}}
+    </pre>
+
+  {% endif %}
+
 
 
   {% if uncertainty %}
