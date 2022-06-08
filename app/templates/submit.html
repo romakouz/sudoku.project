@@ -18,12 +18,19 @@
   {% if uncertainty %}
   <br>
   Thanks for the puzzle. Here is what our puzzle looks like.
-  {{prediction}}
+  <pre>
+{{prediction}}
+  </pre>
+  
+  <br>
   However we are uncertain about certain values.
-  {{uncertain}}
+  <pre>
+    {{uncertain}}
+  </pre>
+  <br>
   {% endif %}
   
-  
+
   {% if prediction %}
     <br>
     Thanks for the puzzle!

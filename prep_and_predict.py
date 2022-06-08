@@ -175,7 +175,7 @@ def CompleteSudokuPredictFromRaw(image, model_pickled):
       puzzle_arr[i][j]=prediction
       if certainty < 0.7: 
         #add uncertain tuple to list
-        uncertain.append((i,j))
+        uncertain.append((i+1,j+1))
         #print("We are uncertain if the prediction in row " + i.str() + ", column "+ j.str() +" is correct.")
   
   return puzzle_arr, uncertain
