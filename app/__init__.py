@@ -183,15 +183,20 @@ def correcting1():
     #use global c_puzzle and copy it
     global c_puzzle
     global puzzle
+
+    
     
     #get correction
     answer = request.form['submit_button']
     if answer == "yes":
-        return render_template('submit.html', recorrect=True)
+        puzzle_str = pf.print_puzzle(c_puzzle)
+        return render_template('submit.html', recorrect=True, tofix=puzzle_str)
     
     else:
-        puzzle_str = pf.print_puzzle(c_puzzle)
+        
         #try to solve the puzzle
+        puzzle_str = pf.print_puzzle(c_puzzle)
+
         sf.sudoku_solve(c_puzzle)
         puzzle_sol_str = pf.print_puzzle(c_puzzle)
 
