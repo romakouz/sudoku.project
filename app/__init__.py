@@ -40,8 +40,8 @@ def submit():
         
         if not img:
             #if no image,  then user is only submitting correction
-            corr = request.form['corr']
-            flash('Thanks for the correction!')
+            corr = request.form['correction']
+            #flash('Thanks for the correction!')
             
             return render_template('submit.html', adjusting=True, adjustment = corr)
         else:
