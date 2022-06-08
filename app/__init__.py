@@ -11,6 +11,7 @@ from PIL import Image
 import print_funcs as pf
 import prep_and_predict as pnp
 import solve_funcs as sf
+from correct_funcs import correct
 
 
 from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
@@ -30,6 +31,9 @@ def main():
 
 # matplotlib: https://matplotlib.org/3.5.0/gallery/user_interfaces/web_application_server_sgskip.html
 # plotly: https://towardsdatascience.com/web-visualization-with-plotly-and-flask-3660abf9c946
+
+#define global variable puzzle to be the puzzle we adjust
+puzzle = np.zeros((9,9))
 
 @app.route('/submit-sudoku/', methods=['POST', 'GET'])
 def submit():
@@ -128,7 +132,16 @@ def submit():
 
 @app.route('/correcting', methods=['POST'])
 def correcting():
+    #get correction
     corr = request.form['correction']
-    return render_template('submit.html', adjusting=True, adjustment=corr)
+    corr_tuple = tuple(corr.split(','))
+
+
+    #correct puzzle
+    puzzle = correct(corr_tuple,puzzle)
+    puzzle_str = pf.print_puzzle(puzzle)
+
+
+    return render_template('submit.html', adjusting=True, adjustment=corr, new_puzzle=puzzle_str)
     # your code
     # return a response
