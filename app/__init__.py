@@ -175,6 +175,6 @@ def ready():
 
         return render_template('submit.html', solved=True, solution=puzzle_sol_str, original=puzzle_str)
     else:
-        redirect
+        return redirect(url_for('/correcting'))
     
     
