@@ -185,7 +185,7 @@ def correcting1():
     global puzzle
     
     #get correction
-    answer = request.form['answer1']
+    answer = request.form['submit_button']
     if answer == "yes":
         return redirect(url_for('/correcting'))
     
