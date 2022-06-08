@@ -74,8 +74,17 @@
   <label for="yes">Yes</label>
   <input type="radio" name="answer1" id="no" value="no">
   <label for="No">No</label>
-  <br>
   <input type="submit" value="Submit">
+<br>
+<form action="{{ url_for('correcting1') }}" method="post">
+  <label for="ready">Would you like to make a correction?</label>
+  <input type="radio" name="answer1" id="yes" value="yes">
+  <label for="yes">Yes</label>
+  <input type="radio" name="answer1" id="no" value="no">
+  <label for="No">No</label>
+  <button type="submit" value="Submit">
+<br>
+  
 
   <form action="{{ url_for('correcting') }}" method="post">
     <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
