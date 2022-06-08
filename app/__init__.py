@@ -35,7 +35,13 @@ def main():
 def submit():
     if request.method == 'GET':
         return render_template('submit.html')
+    elif not title:
+        flash('Thanks for the correcton!')
+        corr = request.form['corr']
+        return render_template('submit.html', adjusting=True, adjustment = corr)
     else:
+
+        
         try:            
             '''
             1. Access the image

@@ -17,6 +17,12 @@
     Thanks for submitting a file!
   {% endif %}
 
+  {% if adjusting %}
+    Thanks for the correction. Your correction is:
+    <br>
+    {{adjustment}}
+  {% endif %}
+
   {% if uncertainty %}
   <br>
   Thanks for the puzzle. Here is what our puzzle looks like.
@@ -26,11 +32,12 @@
   
   <br>
   However we are uncertain about certain values.
+  {}
   <form method="post">
     <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
       <br> (e.g. i,j,k corresponds to inputting digit k in ith row, jth column).
     <br> (Enter 0 if cell should be blank.).</label><br>
-    <input type="text" name="image" placeholder= "row,column,digit" id="image">
+    <input type="text" name="correction" placeholder= "row,column,digit" id="image" value="{{ request.form['corr'] }}">
     <input type="submit" value="Correct index">
 </form>
   <pre>
