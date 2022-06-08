@@ -87,12 +87,24 @@ def submit():
             #pngImageB64String += base64.b64encode(pngImage.getvalue()).decode('utf8')
 
             #instead, create string for predicted puzzle, and solution
-            puzzle = pnp.CompleteSudokuPredictFromRaw(img, model)
-            try:
-                puzzle_str = pf.print_puzzle(puzzle)
-                
-            except:
-                return render_template('submit.html', error3=True, shape=img_shape)
+            puzzle, uncertain_values = pnp.CompleteSudokuPredictFromRaw(img, model)
+            
+            puzzle_str = pf.print_puzzle(puzzle)
+
+            if len(uncertain_values) > 0:
+                uncertain_str = "We are uncertain if our prediction(s) in"
+                for i in range(len(uncertain_values)):
+                    #add comma if not first value
+                    if i > 0:
+                        uncertain_str += ","
+                    
+                    cell = uncertain_values[i]
+                    uncertain_str += " row " + str(cell[0]) + ", column " + str(cell[1])
+                    
+                    
+                uncertain_str += " is correct.\n Please double check this with the image."
+
+                return render_template('submit.html', uncertainty=True, prediction=puzzle_str, uncertain=uncertain_str)
 
             
 

@@ -161,17 +161,22 @@ def CompleteSudokuPredictFromRaw(image, model_pickled):
   Inputs an image of a full sudoku puzzle (before preprocessing), applies preprocessing,
   converts into 450*450 np array, and proceeds with calling CNN on each cell,
   returns a numpy array of the predicted puzzle 
+
+  Keep track of any uncertain indices in a list
   '''
   image = fullpreprocess(image)
   puzzle_arr =np.zeros((9,9),dtype=np.int64)
+  uncertain = []
 
   cells = splitcells(image) #get list of all cells in image
   for i in range(9):
     for j in range(9):
       prediction, certainty = CNN1predict(cells[i*9 +j], model_pickled)
       puzzle_arr[i][j]=prediction
-      if certainty < 0.5: 
+      if certainty < 0.4: 
+        #add uncertain tuple to list
+        unertain.append((i,j))
         print("We are uncertain if the prediction in row " + i.str() + ", column "+ j.str() +" is correct.")
   
-  return puzzle_arr
+  return puzzle_arr, uncertain
 

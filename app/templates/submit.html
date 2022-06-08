@@ -59,9 +59,12 @@
     Error in loading pickle
   {% endif %}
 
-  {% if error3 %}
-    <br>
-    CNNpredict did not work (or print_puzzle). Image_shape = {{shape}}
+  {% if uncertainty %}
+  <br>
+  Thanks for the puzzle. Here is what our puzzle looks like.
+  {{prediction}}
+  However we are uncertain about certain values.
+  {{uncertain}}
   {% endif %}
 
 {% endblock %}
