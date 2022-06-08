@@ -33,7 +33,7 @@
   <br>
   However we are uncertain about certain values.
   {}
-  <form method="post">
+  <form action="{{ url_for('correcting') }}" method="post">
     <label for="Cell-data">Please enter corrections for incorrect cells as comma seperated values.
       <br> (e.g. i,j,k corresponds to inputting digit k in ith row, jth column).
     <br> (Enter 0 if cell should be blank.).</label><br>
