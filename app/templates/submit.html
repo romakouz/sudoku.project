@@ -75,14 +75,16 @@
   <input type="radio" name="answer1" id="no" value="no">
   <label for="No">No</label>
   <input type="submit" value="Submit">
+  </form>
 <br>
 <form action="{{ url_for('correcting1') }}" method="post">
   <label for="ready">Would you like to make a correction?</label>
-  <input type="radio" name="answer1" id="yes" value="yes">
-  <label for="yes">Yes</label>
-  <input type="radio" name="answer1" id="no" value="no">
-  <label for="No">No</label>
-  <button type="submit" value="Submit">
+  <input type ="submit" name="submit_button" value = "yes">
+  <input type ="submit" name="submit_button" value = "no">
+</form>
+
+
+<input type ="submit" name="submit_button" value = "">
 <br>
   
 
