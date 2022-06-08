@@ -175,6 +175,7 @@ def ready():
 
         return render_template('submit.html', solved=True, solution=puzzle_sol_str, original=puzzle_str)
     else:
+        puzzle_str = pf.print_puzzle(c_puzzle)
         return render_template('submit.html', recorrect=True, tofix=puzzle_str)
     
 
